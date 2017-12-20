@@ -1,0 +1,30 @@
+var counterRot = 0
+var speed = 0
+
+var canvas = ui.addCanvas(0.1, 0.15, 0.8, 0.5)
+canvas.draw = function (c) {
+  c.clear()
+
+  for (var j = 0; j < c.height; j += 100) {
+    for (var i = 0; i < c.width; i += 100) {
+      c.strokeWidth(10)
+
+      c.push()
+      c.translate(i + 25, j + 25)
+      c.rotate(counterRot + 2 * i + j)
+      c.stroke(255, 255, 255)
+      c.line(0, 0, 50, 0)
+      c.pop()
+
+    }
+  }
+  counterRot += speed
+}
+
+util.loop(20, function () {
+  canvas.invalidate()
+}).start()
+
+ui.addKnob(0.4, 0.8, 0.2, 0.2).onChange(function (e) {
+  speed = e.value / 10
+})
