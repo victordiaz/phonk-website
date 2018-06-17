@@ -1,5 +1,6 @@
 <template>
   <div id = "info">
+    <!--
     <div v-if = "isData(data)">
       <div class = "btn-sidebar btn-close" v-on:click = "close" v-if = "false">
         <i class = "fa fa-close"></i>
@@ -59,6 +60,7 @@
         </ul>
       </div>
     </div>
+  -->
   </div>
 </template>
 
@@ -87,8 +89,6 @@ export default {
     }
   },
   computed: {
-    arrowposition: function () {
-    }
   },
   methods: {
     getGithubUrl: function (method) {
@@ -118,7 +118,7 @@ export default {
 </script>
 
 <style lang = "less">
-@import "../assets/variables.less";
+@import (reference) "../assets/variables.less";
 
 .vertical #card {
   border-top: solid 0px #54524f;

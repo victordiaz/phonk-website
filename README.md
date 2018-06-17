@@ -1,6 +1,6 @@
-# phonk
+# phonk-web-2
 
-> Phonk
+> Nuxt.js project
 
 ## Build Setup
 

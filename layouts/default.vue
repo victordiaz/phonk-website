@@ -1,26 +1,35 @@
 <template>
-  <!--
-      <meta name="viewport" content="initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
-      <title>phonk! bits of creative programming for Android devices</title>
-      <meta name="description" content="Self-contained creative coding framework for Android devices">
-      <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500,700|Roboto:400,500,700|Roboto+Condensed:700" rel="stylesheet">
-  -->
 
   <div>
-    <div class = "hero">
-      <toolbar></toolbar>
+
+    <div id = "banner">
+      <div id = "title">
+        <h1>Phonk!</h1>
+        <h2>A self-contained creative programming tool for new and obsolete android mobile devices</h2>
+      </div>
+
+
+      <picture>
+        <source media="(max-width: 800px)" srcset="/static/img/banner_phonk_small.png">
+        <img src="/static/img/banner_phonk.png" alt="">
+      </picture>
+
+    </div>
+
+    <div v-if = "false" class = "hero">
+      <toolbar v-if = "false"></toolbar>
       <devices-code v-if = "showDevices($nuxt.$route.path)"></devices-code>
       <!--
       {{showDevices($nuxt.$route.path)}}
       {{$nuxt.$route.path}}
       -->
-
     </div>
 
     <nuxt/>
 
-    <footer>Phonk!</footer>
+    <footer>Phonk! your phone up</footer>
   </div>
+
 </template>
 
 <script>
@@ -34,7 +43,8 @@ export default {
   },
   methods: {
     showDevices: function (path) {
-      return !path.startsWith('/documentation')
+      return false
+      // return !path.startsWith('/documentation')
     }
   }
 }
@@ -47,13 +57,18 @@ export default {
 
 <style lang = "less">
 @import "../assets/variables.less";
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,500,800');
 
 * {
   box-sizing: border-box;
 }
 
+p {
+  line-height: 1.5em;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Mono", 'monospace';
   font-size: 16px;
   background: @backgroundColorSecondary;
   color: @textColor;
@@ -79,9 +94,59 @@ a {
   padding: 32px 30px;
 }
 
+@media screen and (max-width: 800px) {
+  #banner {
+    display: flex;
+    flex-direction: column;
+    background: #e0e0e0;
+
+    #title {
+      position: static !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      background: #e0e0e0;
+      padding: 35px;
+      padding-bottom: 0;
+      font-size: calc(5vmin) !important;
+    }
+
+    picture {
+      margin-bottom: -40px;
+      padding: 10px 20px;
+    }
+
+  }
+}
+
+#banner {
+
+  #title {
+    position: absolute;
+    top: calc(4.5vw);
+    left: calc(4.5vw);
+    width: 25%;
+    max-width: 28%;
+    font-size: 2vw;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    line-height: 1.5em;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
 #container {
   padding: 20px;
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
   display: flex;
   flex-flow: column;
@@ -131,25 +196,6 @@ a {
 
 h3 {
   font-weight: 500;
-}
-
-.construction {
-  position: absolute;
-  right: 0;
-  text-align: center;
-  display: flex;
-  align-items: center;
-
-  p {
-    margin-right: 12px;
-    font-weight: 600;
-    text-decoration: underline;
-  }
-
-  img {
-    width: 50px;
-    height: 50px;
-  }
 }
 
 #devices {
@@ -253,23 +299,25 @@ h3 {
   display: flex;
   align-self: center;
   flex: 1;
-  margin: 30px 0;
+  margin: 70px 0;
   font-size: 1.5em;
   text-overflow: ellipsis;
   align-content: center;
   align-items: center;
   flex-flow: initial;
+  text-transform: uppercase;
 
   a {
     background: transparent;
-    padding: 8px 12px;
+    padding: 18px 22px;
     margin: 8px;
     border-radius: 0px;
     color: white;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 800;
     color: @textColorSecondary;
     background: @accentColor;
+    box-shadow: 2px 2px 2px 1px #0003;
   }
 
   a:hover {
@@ -281,26 +329,28 @@ h3 {
 #features {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 30px;
+  grid-gap: 45px;
 
-  h3, p {
-    padding: 8px 0;
+  h3 {
+    padding: 28px 0px 16px 0px;
+    font-size: 1.2em;
+    color: #333;
   }
 
   p {
     font-size: 0.8em;
-    font-weight: 100;
     line-height: 1.4em;
+    font-weight: 400;
   }
 
   li {
-    margin-top: 22px;
+    margin: 22px 0;
   }
 
   img {
     background: white;
     // width: 200px;
-    // height: 200px;
+    height: 300px;
     width: 100%;
     outline: none;
     object-fit: cover;
@@ -309,6 +359,10 @@ h3 {
 }
 
 footer {
+  color: white;
+  font-weight: 800;
+  background: @accentColor;
+  height: 100px;
   font-size: 1em;
   text-align: center;
   padding-top: 50px;

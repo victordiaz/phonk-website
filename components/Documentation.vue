@@ -1,6 +1,6 @@
 <template>
   <div id = "documentation" class = "proto_panel" v-bind:class = "{'expanded': expanded, 'collapsed': !expanded}">
-    <!--   -->
+    <!--
     <div class = "wrapper">
 
     <div class = "actionbar" v-if = "false">
@@ -9,15 +9,15 @@
 
     <div class = "content" v-bind:class = "[view_type]">
       <div id = "browser" v-bind:class = "{hide_debug: !debug}">
-        <!-- TODO orderBy -->
+
         <div v-for = "object in queriedDocumentation" class = "object">
           <h3>{{object.name}}</h3>
           <ul>
-            <!-- TODO filter and orderBy name-->
+
             <li v-for = "f in object.fields"><p>{{f.name}}</p></li>
           </ul>
           <ul>
-            <!-- TODO filter and orderBy name -->
+
             <li v-if = "show_method(m)" v-for = "m in object.methods" v-bind:class = "{todo: m.status === 'TODO', todo_example: m.status === 'TODO_EXAMPLE', toreview: m.status === 'TOREVIEW', advanced: m.advanced === true, missing: m.status === 'missing'}">
               <p v-on:click = "select_method(object, m)">{{m.name}}()</p>
             </li>
@@ -33,7 +33,7 @@
 
     </div>
   </div>
-
+  -->
 
   </div>
 </template>
@@ -61,8 +61,6 @@ export default {
     }
   },
   computed: {
-    arrowposition: function () {
-    },
     queriedDocumentation: function () {
       var that = this
       var doc = _.cloneDeep(this.documentation)
@@ -150,7 +148,7 @@ export default {
 </script>
 
 <style lang='less'>
-@import "../assets/variables.less";
+@import (reference) "../assets/variables.less";
 
 .header {
   h2 { color: @accentColor; }

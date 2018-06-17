@@ -19,7 +19,7 @@
 </template>
 
 <style lang = "less">
-@import "../assets/variables.less";
+@import (reference) "../assets/variables.less";
 
 .toolbar {
   display: flex;
