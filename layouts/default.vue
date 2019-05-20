@@ -4,10 +4,9 @@
 
     <div id = "banner">
       <div id = "title">
-        <h1>Phonk!</h1>
-        <h2>A self-contained creative programming tool for new and obsolete android mobile devices</h2>
+        <h1>Phonk</h1>
+        <h2>Self-contained <br /><span class = "colored-one">creative programming</span> for <span class = "colored-two">new</span> <span class = "colored-three"> & obsolete</span> <span class = "colored-four"> android</span> devices</h2>
       </div>
-
 
       <picture>
         <source media="(max-width: 800px)" srcset="/static/img/banner_phonk_small.png">
@@ -27,7 +26,10 @@
 
     <nuxt/>
 
-    <footer>Phonk! your phone up</footer>
+    <footer>
+      <h1>Phonk! your phone up</h1>
+      <p>A project by <a href = "http://www.victordiazbarrales.com">this guy</a></p>
+    </footer>
   </div>
 
 </template>
@@ -107,7 +109,6 @@ a {
       background: #e0e0e0;
       padding: 35px;
       padding-bottom: 0;
-      font-size: calc(5vmin) !important;
     }
 
     picture {
@@ -121,27 +122,75 @@ a {
 #banner {
 
   #title {
+    font-family: Roboto;
     position: absolute;
     top: calc(4.5vw);
     left: calc(4.5vw);
-    width: 25%;
-    max-width: 28%;
-    font-size: 2vw;
+    width: 60ch;
+    max-width: 60ch;
   }
 
   h1 {
     font-weight: 800;
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 10px;
   }
 
   h2 {
-    line-height: 1.5em;
+    font-size: 3em;
+    color: white;
+    text-shadow: 1px 1px #0003;
+    line-height: 1.3em;
   }
 
   img {
     width: 100%;
   }
+
+  .colored-one, .colored-two, .colored-three, .colored-four {
+    font-family: Roboto;
+    // color: @accentColor;
+    font-weight: 800;
+    animation-name: light-up-accentcolor;
+    animation-duration: 300ms;
+    animation-delay: 2s;
+    // opacity: 0;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+
+  .colored-two {
+    animation-name: light-up-newcolor;
+    animation-delay: 2.3s;
+  }
+
+  .colored-three {
+    animation-name: light-up-obsoletecolor;
+    animation-delay: 2.6s;
+  }
+
+  .colored-four {
+    animation-name: light-up-androidcolor;
+    animation-delay: 2.9s;
+  }
+
+  .light-up-mixin(@color1) {
+    0% {
+      // opacity: 0;
+      margin-left: -10px;
+    }
+    100% {
+      opacity: 1;
+      color: @color1;
+      text-shadow: 2px 2px 0px darken(@color1, 30%);
+    }
+  }
+
+  @keyframes light-up-accentcolor { .light-up-mixin(@accentColor) }
+  @keyframes light-up-newcolor { .light-up-mixin(@accentColor) }
+  @keyframes light-up-obsoletecolor { .light-up-mixin(@accentColor) }
+  @keyframes light-up-androidcolor { .light-up-mixin(#00BB00) }
+
 }
 
 #container {
@@ -310,8 +359,8 @@ h3 {
   a {
     background: transparent;
     padding: 18px 22px;
-    margin: 8px;
-    border-radius: 0px;
+    margin: 8px 20px;
+    border-radius: 3px;
     color: white;
     text-decoration: none;
     font-weight: 800;
@@ -326,46 +375,24 @@ h3 {
   }
 }
 
-#features {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 45px;
-
-  h3 {
-    padding: 28px 0px 16px 0px;
-    font-size: 1.2em;
-    color: #333;
-  }
-
-  p {
-    font-size: 0.8em;
-    line-height: 1.4em;
-    font-weight: 400;
-  }
-
-  li {
-    margin: 22px 0;
-  }
-
-  img {
-    background: white;
-    // width: 200px;
-    height: 300px;
-    width: 100%;
-    outline: none;
-    object-fit: cover;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-}
-
 footer {
   color: white;
   font-weight: 800;
   background: @accentColor;
-  height: 100px;
   font-size: 1em;
   text-align: center;
-  padding-top: 50px;
+  padding: 25px;
+
+  p {
+    font-weight: 100;
+    margin-top: 10px;
+  }
+
+  a {
+    border-bottom: 1px solid white;
+  }
+
+
 }
 
 #app {

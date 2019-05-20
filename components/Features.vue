@@ -55,6 +55,40 @@
   </div>
 </template>
 
-<style>
+<style lang = "less">
+@import (reference) "../assets/variables.less";
+
+
+#features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 45px;
+
+  h3 {
+    padding: 28px 0px 10px 0px;
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  p {
+    font-size: 0.8em;
+    line-height: 1.4em;
+    font-weight: 400;
+  }
+
+  li {
+    margin: 22px 0;
+  }
+
+  img {
+    background: white;
+    // width: 200px;
+    height: 300px;
+    width: 100%;
+    outline: none;
+    object-fit: cover;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+}
 
 </style>
